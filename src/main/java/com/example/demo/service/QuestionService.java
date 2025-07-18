@@ -4,6 +4,8 @@ package com.example.demo.service;
 import com.example.demo.dao.QuestionDao;
 import com.example.demo.model.Question;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -13,17 +15,17 @@ public class QuestionService {
 
     @Autowired
     QuestionDao questionDao;
-    public List<Question> getAllQuestions()
+    public ResponseEntity<List<Question>> getAllQuestions()
     {
-        return questionDao.findAll();
+        return new ResponseEntity<>(questionDao.findAll(), HttpStatus.OK);
     }
 
-    public List<Question> getQuestionsByCategory(String category) {
-        return questionDao.findByCategory(category);
+    public ResponseEntity<List<Question>> getQuestionsByCategory(String category) {
+        return new ResponseEntity<>(questionDao.findByCategory(category), HttpStatus.OK);
     }
 
-    public String addQuestion(Question question) {
+    public ResponseEntity<String> addQuestion(Question question) {
         questionDao.save(question);
-        return "success";
+        return new ResponseEntity<>("success", HttpStatus.CREATED);
     }
 }
