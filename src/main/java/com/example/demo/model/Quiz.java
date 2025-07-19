@@ -21,7 +21,6 @@ public class Quiz {
     )
     private List<Question> questions;
 
-    // Getters and Setters
     public Integer getId() {
         return id;
     }
