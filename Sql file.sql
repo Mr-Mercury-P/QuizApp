@@ -1,21 +1,7 @@
+create database prabhas;
+
 use prabhas;
 
-
-
-DROP TABLE IF EXISTS quiz_questions;
-DROP TABLE IF EXISTS quiz;
-DROP TABLE IF EXISTS question;
-
-
-select * from question;
-
-select * from quiz;
-
-select * from quiz_questions;
-
-
-
--- Create table for Question model
 CREATE TABLE question (
     id SERIAL PRIMARY KEY,
     question_title VARCHAR(255),
@@ -28,7 +14,6 @@ CREATE TABLE question (
     category VARCHAR(50)
 );
 
--- Insert sample data
 INSERT INTO question (id, category, difficultylevel, option1, option2, option3, option4, question_title, right_answer) VALUES
 (1, 'JAVA', 'Easy', 'class', 'interface', 'extends', 'implements', 'Which Java keyword is used to create a subclass?', 'extends'),
 (2, 'Java', 'Easy', '4', '5', '6', 'Compile error', 'What is the output of the following Java code snippet?', '5'),
@@ -46,3 +31,23 @@ INSERT INTO question (id, category, difficultylevel, option1, option2, option3, 
 (14, 'Python', 'Easy', 'To generate a random number within a given range.', 'To iterate over a sequence of numbers.', 'To sort a list in ascending order.', 'To calculate the length of a string.', 'What is the purpose of the "range()" function in Python?', 'To iterate over a sequence of numbers.'),
 (15, 'Python', 'Easy', 'int', 'float', 'str', 'list', 'In Python, which data type is mutable?', 'list'),
 (16, 'Python', 'Easy', 'datetime', 'math', 'os', 'sys', 'Which Python module is used for working with dates and times?', 'datetime');
+
+
+select * from question;
+
+show tables;
+
+select * from quiz;
+select * from quiz_questions;
+
+DROP TABLE IF EXISTS quiz_questions;
+DROP TABLE IF EXISTS quiz;
+DROP TABLE IF EXISTS question;
+
+
+desc question;
+
+
+SELECT id, right_answer
+FROM question
+WHERE id IN (9, 3, 4, 7, 2);
